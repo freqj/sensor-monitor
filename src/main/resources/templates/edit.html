@@ -9,19 +9,27 @@
 </head>
 <body>
    <form id="edit" action="/api/v1/sensor">
-       <input type="text" name="title" th:value="${sensor.getTitle()}">
-       <input type="text" name="description" th:value="${sensor.getDescription()}">
-       <input type="text" name="model" th:value="${sensor.getModel}">
+       <span>Title:</span>
+       <input type="text" name="title" th:value="${sensor.getTitle()}"></br>
+       <span>Description:</span>
+       <input type="text" name="description" th:value="${sensor.getDescription()}"></br>
+       <span>Model:</span>
+       <input type="text" name="model" th:value="${sensor.getModel}"></br>
+       <span>Type:</span>
        <select name="type">
             <option th:selected="${type.getName().equals(sensor.getType())}" th:each="type: ${types}" th:value="${type.getName()}" th:text="${type.getName()}"></option>
-       </select>
+       </select></br>
+       <span>Unit:</span>
        <select name="unit">
            <option th:selected="${unit.getName().equals(sensor.getUnit())}" th:each="unit: ${units}" th:value="${unit.getName()}" th:text="${unit.getName()}"></option>
 
-       </select>
-       <input type="text" name="location" th:value="${sensor.getLocation()}">
-       <input type="number" name="range.to" th:value="${sensor.getRange().get('to')}">
+       </select></br>
+       <span>Location:</span>
+       <input type="text" name="location" th:value="${sensor.getLocation()}"></br>
+       Range:
        <input type="number" name="range.from" th:value="${sensor.getRange().get('from')}">
+       <input type="number" name="range.to" th:value="${sensor.getRange().get('to')}"></br>
+
        <input type="number" hidden="true" name="id" th:value="${sensor.getId()}">
        <input type="text" hidden="true" name="_method" th:value="PUT">
        <button type="submit" > Submit </button>
