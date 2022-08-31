@@ -2,8 +2,10 @@
 
 **Алгорит запуска:**
 
--1.Запустить скрипт init.sql
+-1.Создать бд в PostgreSQl с названием sensor
 
--2.Изменить username и password в application.properties
+-2.Запустить скрипт init.sql
 
--3.Запустить MonitorSensorTaskApplication
+-3.Изменить username и password в application.properties
+
+-4.Запустить MonitorSensorTaskApplication
