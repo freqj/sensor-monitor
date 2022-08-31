@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <form th:action="@{'/list'}" >
+    <input type="text" th:id="search" name="search" placeholder="search"/>
+        <button type="submit">Search</button>
+    </form>
+    <div th:if="${#authorization?.expr('hasRole(''ROLE_ADMIN'')')}">
+        <a  th:href="@{'save/'}">Add Sensor</a>
+    </div>
+    <tr  th:each="sensor : ${list}">
+        <div>
+            <td th:text="${sensor.getTitle()}"></td></br>
+            Model: <td th:text="${sensor.getModel()}"></td></br>
+            <td th:text="${sensor.getType()}"></td>:
+            <td th:text="${sensor.getRange().get('from')}"></td>
+            ...
+            <td th:text="${sensor.getRange().get('to')}"></td>
+            <td th:text="${sensor.getUnit()}"></td>
+            </br>
+
+            Location:
+            <td th:text="${sensor.getLocation()}"></td>
+            </br>
+
+            <div th:if="${#authorization?.expr('hasRole(''ROLE_ADMIN'')')}">
+                <a  th:href="@{'edit/' + ${sensor.getId()}}">Edit</a>
+            </div>
+        </div>
+    </tr>
+
+</body>
+</html>
