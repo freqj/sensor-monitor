@@ -9,3 +9,10 @@
 -3.Изменить username и password в application.properties
 
 -4.Запустить MonitorSensorTaskApplication
+
+
+Данные для входа:
+
+user:user
+
+admin:admin
