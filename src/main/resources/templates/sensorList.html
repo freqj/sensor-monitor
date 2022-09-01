@@ -10,7 +10,7 @@
 <body>
 
     <form th:action="@{'/list'}" >
-    <input type="text" th:id="search" name="search" placeholder="search"/>
+    <input type="text" th:id="search" name="search" placeholder="search" th:value="${#request.getParameter('search')}"/>
         <button type="submit">Search</button>
     </form>
     <div th:if="${#authorization.expression('isAuthenticated()')}">
@@ -20,7 +20,7 @@
         <a  th:href="@{'save/'}">Add Sensor</a>
     </div>
     <tr  th:each="sensor : ${list}">
-        <div>
+        <div style="margin-top: 20px">
             <td th:text="${sensor.getTitle()}"></td></br>
             Model: <td th:text="${sensor.getModel()}"></td></br>
             <td th:text="${sensor.getType()}"></td>:
